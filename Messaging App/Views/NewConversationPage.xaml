@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Messaging_App.Views"
+             xmlns:vm="clr-namespace:Messaging_App.ViewModels"
+             x:Class="Messaging_App.Views.NewConversationPage"
+             Title="New Conversation">
+    <ContentPage.BindingContext>
+        <vm:NewConversationViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout Padding="20">
+        <SearchBar Placeholder="Search contacts..." Text="{Binding SearchQuery}" />
+        <ListView ItemsSource="{Binding Users}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Username}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

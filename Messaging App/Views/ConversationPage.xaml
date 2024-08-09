@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Messaging_App.ViewModels"
+             x:Class="Messaging_App.Views.ConversationPage"
+             Title="Conversation">
+
+    <StackLayout Padding="20">
+        <ListView ItemsSource="{Binding Messages}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Username}" FontAttributes="Bold" Grid.Column="0" VerticalOptions="Center" Margin="0,0,10,0" />
+                            <Label Text="{Binding Text}" Grid.Column="1" VerticalOptions="Center" />
+                            <Label Text="{Binding TimeSent, StringFormat='{0:HH:mm:ss}'}" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Orientation="Horizontal">
+            <Entry Placeholder="Type a message..." Text="{Binding NewMessageText}" HorizontalOptions="FillAndExpand"/>
+            <Button Text="Send" Command="{Binding SendMessageCommand}" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

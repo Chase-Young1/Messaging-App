@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Messaging_App.ViewModels"
+             x:Class="Messaging_App.Views.SearchUsersPage"
+             Title="Search Users">
+
+    <ContentPage.BindingContext>
+        <vm:SearchUsersViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="20">
+        <SearchBar Placeholder="Search users..." Text="{Binding SearchQuery}" />
+        <ListView ItemsSource="{Binding Users}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Username}" FontAttributes="Bold"/>
+                            <Label Text="{Binding FirstName} {Binding LastName}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
